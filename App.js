@@ -25,6 +25,8 @@ export default function App() {
     setList((list) => [...list, { item: newItem, key: list.length + 1 }]);
   };
 
+  console.log(list);
+
   return (
     <View style={styles.container}>
       <TextInput
@@ -38,17 +40,20 @@ export default function App() {
       <Pressable style={styles.button} onPress={handleClear}>
         <Text style={styles.text}>Clear shopping list</Text>
       </Pressable>
-      <FlatList
-        data={list}
-        renderItem={({ listItem }) => <Text>{listItem.item}</Text>}
-      />
+      {list ? (
+        <FlatList
+          style={styles.list}
+          data={list}
+          renderItem={(listItem) => <Text>{listItem.key}</Text>}
+        />
+      ) : null}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    padding: 150,
+    padding: 80,
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
@@ -73,5 +78,11 @@ const styles = StyleSheet.create({
   },
   text: {
     fontWeight: "bold",
+  },
+  list: {
+    width: 100,
+    height: 100,
+    color: "black",
+    borderWidth: 5,
   },
 });
