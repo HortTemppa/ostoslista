@@ -44,7 +44,7 @@ export default function App() {
         <FlatList
           style={styles.list}
           data={list}
-          renderItem={(listItem) => <Text>{listItem.key}</Text>}
+          renderItem={({ item }) => <Text>{item.item}</Text>}
         />
       ) : null}
     </View>
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     backgroundColor: "lightblue",
     width: 150,
     height: "auto",
-    borderRadius: 5,
+    borderRadius: 1,
     borderWidth: 2,
     borderColor: "black",
   },
@@ -80,9 +80,10 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   list: {
+    padding: 5,
     width: 100,
     height: 100,
     color: "black",
-    borderWidth: 5,
+    borderWidth: 1,
   },
 });
